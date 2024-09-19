@@ -1,0 +1,7 @@
+a = input()
+b = input()
+print(''.join(str(int(x) & int(y)) for x, y in zip(a, b)))
+print(''.join(str(int(x) | int(y)) for x, y in zip(a, b)))
+print(''.join(str(int(x) ^ int(y)) for x, y in zip(a, b)))
+print(''.join(str(1 - int(x)) for x in a))
+print(''.join(str(1 - int(x)) for x in b))
