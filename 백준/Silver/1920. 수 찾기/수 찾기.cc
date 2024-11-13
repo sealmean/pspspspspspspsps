@@ -1,78 +1,47 @@
-#include <iostream>
-
-#include <vector>
-
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
+#define INF 1000000007
 
-int binarySearch(const vector<int>& array, int x) {
+bool bs(vector<int>& ls, int a){
+    int s = 0;
+    int e = ls.size()-1;
 
-    int start = 0, end = array.size() - 1;
-
-    while (start <= end) {
-
-        int middle = start + (end - start) / 2;
-
-        if (x < array[middle]) {
-
-            end = middle - 1;
-
-        } else if (x == array[middle]) {
-
-            return 1;
-
+    while(s<=e){
+        int m = (s+e)/2;
+        if (a<ls[m]){
+            e = m-1;
+        } else if (a == ls[m]) {
+            return true;
         } else {
-
-            start = middle + 1;
-
+            s = m+1;
         }
-
     }
-
-    return 0;
-
+    return false;
 }
 
 int main() {
-
-    ios_base::sync_with_stdio(false); // C와 C++ 표준 스트림을 분리
-
-    cin.tie(NULL); // 입력 스트림의 묶음을 해제
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
     int n;
-
-    cin >> n;
-
-    vector<int> arr(n);
+    cin>>n;
+    vector<int> ls(n);
 
     for (int i = 0; i < n; ++i) {
-
-        cin >> arr[i];
-
+        cin>>ls[i];
     }
 
-    sort(arr.begin(), arr.end());
+    sort(ls.begin(),ls.end());
+    int m1;
+    cin>>m1;
+    vector<int> ls2(m1);
 
-    int m;
-
-    cin >> m;
-
-    vector<int> arr2(m);
-
-    for (int i = 0; i < m; ++i) {
-
-        cin >> arr2[i];
-
+    for (int i = 0; i < m1; ++i) {
+        cin >> ls2[i];
     }
 
-    for (int i = 0; i < m; ++i) {
-
-        cout << binarySearch(arr, arr2[i]) << '\n';
-
+    for (int i:ls2) {
+        cout<< bs(ls,i) <<'\n';
     }
 
     return 0;
-
 }
-
